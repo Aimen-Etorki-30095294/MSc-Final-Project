@@ -1,1 +1,37 @@
-this is msc project for usw
+
+**Student:** Aimen A Ali Etorki
+
+**Student Number:** 30095294
+
+**Year:** Feb 2025 Intake
+
+**Supervisor:** Dr Mabrouka Abuhmida
+
+**MSc Project:** CS4T702_2025/26 Artificial Intelligence 
+
+**Project Title:** Explainable Hybrid AI Model for Early Detection of Alzheimer’s Disease Using MRI-Derived Hippocampal and Brain Structural Features
+
+
+# MSc Final Project
+
+This project implements an explainable hybrid AI framework for multiclass classification of CN, MCI and AD using structural MRI data. The workflow combines MRI-derived structural biomarkers, a ResNet-18 deep learning model using coronal MRI slices, and a Hybrid AI model that integrates deep features with biomarker features. SHAP and Grad-CAM++ are used for model explainability.
+
+The project is organised into five Jupyter notebooks and they should be run in numerical order for full reproduction. Notebook 1 explores the metadata and creates the participant manifest. Notebook 2 reads and reconstructs the DICOM MRI volumes and generates the shared `src/mri_utils.py` preprocessing module. Notebook 3 validates the preprocessing pipeline on a representative MRI scan. Notebook 4 applies preprocessing to the full cohort and creates the final train, validation and test datasets. Notebook 5 trains and evaluates the traditional machine learning, ResNet-18 and Hybrid AI models and produces the explainability results.
+
+The main MRI data are provided in both extracted and compressed formats. The extracted data used directly by the notebooks are stored inside `MRI 1.5T & 3T Dataset/ADNI/`, while the original ZIP archive is also included as a backup in case the dataset needs to be extracted again. Structural biomarker CSV files are stored inside the `biomarkers/` folder. The processed train, validation and test arrays are stored inside `final_dataset/`, trained models are saved in `models/`, and model evaluation outputs are saved in `results/`.
+
+For a complete reproduction, run:
+
+`01_data_exploration.ipynb` → `02_read_dicom.ipynb` → `03_preprocessing.ipynb` → `04_dataset_creation.ipynb` → `05_train_model.ipynb`
+
+The notebooks should be run from the complete project folder without changing the folder names or relative paths. It is recommended to restart the notebook kernel and use **Run All** so that all variables and functions are created in the correct order.
+
+Notebook 2 must be run before Notebooks 3 and 4 because it generates `src/mri_utils.py`. Notebook 1 must also be run before Notebook 4 because it generates `participant_manifest.csv`. If these files are already present in the repository, they can be used directly.
+
+The final dataset uses coronal MRI slices, with 20 slices selected per participant and resized to 224 × 224 pixels. Skull stripping is disabled in the final preprocessing configuration. The dataset is split at participant level using a stratified 70% training, 15% validation and 15% test split, ensuring that slices from the same participant cannot appear in different subsets.
+
+Notebook 5 can be run directly when the supplied files in `final_dataset/` and `biomarkers/` are already available. A complete reproduction from the original DICOM data requires running Notebooks 1–4 before Notebook 5 and will take longer.
+
+Notebook 5 uses PyTorch for deep learning. If a CUDA-compatible GPU is available, it will be used automatically; otherwise, the code can run on CPU, but model training, particularly the multi-seed experiments, will take longer.
+
+To avoid path and dependency errors, the original project structure should be kept unchanged and the correct Python environment or notebook kernel should be selected. The notebook cells should also be run in order. If a file-path or module error occurs, check that the required folders and files are in their original locations and that the outputs required from the previous notebooks have been generated.

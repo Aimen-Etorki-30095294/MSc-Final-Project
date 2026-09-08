@@ -1,0 +1,50 @@
+{
+  "participant_id": "013_S_0996",
+  "sequence": "MPRAGE",
+  "reoriented_volume_shape": [
+    192,
+    192,
+    160
+  ],
+  "voxel_spacing_mm": [
+    1.2,
+    1.25,
+    1.25
+  ],
+  "lower_percentile": 1,
+  "upper_percentile": 99,
+  "signal_threshold": 0.05,
+  "brain_content_threshold": 0.7,
+  "n_slices_requested": 20,
+  "n_slices_selected": 20,
+  "selected_indices": [
+    41,
+    47,
+    52,
+    58,
+    63,
+    69,
+    74,
+    80,
+    86,
+    91,
+    97,
+    102,
+    108,
+    114,
+    119,
+    125,
+    130,
+    136,
+    141,
+    147
+  ],
+  "image_size": [
+    224,
+    224
+  ],
+  "plane": "coronal",
+  "skull_stripped": false,
+  "brain_mask_fraction": 0.1582,
+  "signal_retained_after_masking": 1.0
+}
